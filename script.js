@@ -3,10 +3,17 @@ let context = canvas.getContext("2d");
 let box = 32;
 let snake = [];
 let direction = "rigth";
+let food = {
+    x: Math.floor(Math.random()* 15 + 1 ) * box,
+    y: Math.floor(Math.random()* 15 + 1 ) * box
+}
 
 snake[0] = {x: 8 * box,
             y: 8 * box};
-
+function drawFood(){
+    context.fillStyle = "red";
+    context.fillRect(food.x,food.y,box,box);
+}
 function criarBG(){
     context.fillStyle = "lightgreen";
     context.fillRect(0,0,16*box,16*box);
@@ -40,6 +47,7 @@ function iniciaJogo(){
 
     criarBG();
     criaSnake();
+    drawFood();
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
